@@ -121,7 +121,7 @@ private:
 
 namespace EncryptionHelper {
 
-QByteArray generateRandomFilename();
+OWNCLOUDSYNC_EXPORT QByteArray generateRandomFilename();
 OWNCLOUDSYNC_EXPORT QByteArray generateRandom(int size);
 QByteArray generatePassword(const QString &wordlist, const QByteArray& salt);
 OWNCLOUDSYNC_EXPORT QByteArray encryptPrivateKey(
