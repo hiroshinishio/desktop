@@ -174,10 +174,6 @@ RowLayout {
                 }
 
                 display: Button.IconOnly
-                // leftPadding: 0
-                // rightPadding: 0
-                // bgColor: palette.mid
-                // bgNormalOpacity:  0
 
                 visible: model.showFileDetails
 
@@ -198,10 +194,6 @@ RowLayout {
                 icon.height: Style.buttonSize
 
                 display: Button.IconOnly
-                // leftPadding: 0
-                // rightPadding: 0
-                //bgColor: palette.mid
-                // bgNormalOpacity: 0
 
                 NCToolTip {
                     text: qsTr("Dismiss")

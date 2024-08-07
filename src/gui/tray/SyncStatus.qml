@@ -123,10 +123,6 @@ RowLayout {
         Layout.rightMargin: Style.trayHorizontalMargin
 
         text: qsTr("Resolve conflicts")
-        // textColor: Style.adjustedCurrentUserHeaderColor
-        // textColorHovered: Style.currentUserHeaderTextColor
-        // contentsFont.bold: true
-        // bgColor: Style.currentUserHeaderColor
 
         visible: activityModel.hasSyncConflicts &&
                  !syncStatus.syncing &&

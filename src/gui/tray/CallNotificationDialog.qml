@@ -219,11 +219,6 @@ ApplicationWindow {
 
                         visible: isAnswerCallButton
                         text: modelData.label
-                        // contentsFont.bold: true
-                        // bgColor: Style.ncBlue
-                        // bgNormalOpacity: 0.8
-
-                        //textColor: palette.brightText
 
                         icon.source: root.talkIcon + palette.brightText
                         icon.width: Style.buttonSize
