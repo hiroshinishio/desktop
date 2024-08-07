@@ -93,15 +93,9 @@ RowLayout {
             font: syncNowButton.contentsFont
         }
 
-        // Layout.rightMargin: Style.trayHorizontalMargin
+        Layout.rightMargin: Style.trayHorizontalMargin
 
         text: qsTr("Sync now")
-
-        // padding: Style.smallSpacing
-        // textColor: Style.adjustedCurrentUserHeaderColor
-        // textColorHovered: Style.currentUserHeaderTextColor
-        // contentsFont.bold: true
-        // bgColor: Style.currentUserHeaderColor
 
         visible: !activityModel.hasSyncConflicts &&
                  !syncStatus.syncing &&
