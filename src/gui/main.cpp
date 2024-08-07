@@ -70,7 +70,12 @@ int main(int argc, char **argv)
     QSurfaceFormat::setDefaultFormat(surfaceFormat);
 
     QQuickWindow::setTextRenderType(QQuickWindow::NativeTextRendering);
-    QQuickStyle::setStyle(QStringLiteral("Fusion"));
+
+    auto style = QStringLiteral("Fusion");
+
+#ifdef Q_OS_MAC
+    style = QStringLiteral("macOS");
+#endif
 
     OCC::Application app(argc, argv);
 
@@ -80,9 +85,12 @@ int main(int argc, char **argv)
     // though it looks slightly less native. Check here after the
     // QApplication was constructed, but before any QWidget is
     // constructed.
-    if (app.devicePixelRatio() > 1)
-        QApplication::setStyle(QStringLiteral("fusion"));
+    if (app.devicePixelRatio() > 1) {
+        style = "Windows";
+    }
 #endif // Q_OS_WIN
+
+    QQuickStyle::setStyle(style);
 
 #ifndef Q_OS_WIN
     signal(SIGPIPE, SIG_IGN);
