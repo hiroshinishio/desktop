@@ -1,9 +1,9 @@
-import QtQml 2.15
-import QtQuick 2.15
+import QtQml
+import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts 1.15
-import Style 1.0
-import com.nextcloud.desktopclient 1.0
+import QtQuick.Layouts
+import Style
+import com.nextcloud.desktopclient
 
 Repeater {
     id: root
