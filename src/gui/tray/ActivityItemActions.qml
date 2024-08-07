@@ -41,6 +41,8 @@ Repeater {
         text: model.modelData.label
 
         icon.source: model.modelData.imageSource ? model.modelData.imageSource + Style.adjustedCurrentUserHeaderColor : ""
+        icon.width: Style.buttonSize
+        icon.height: Style.buttonSize
 
         onClicked: isTalkReplyButton ? root.showReplyField() : root.triggerAction(model.index)
 

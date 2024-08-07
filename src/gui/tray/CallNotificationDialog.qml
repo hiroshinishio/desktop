@@ -246,6 +246,8 @@ ApplicationWindow {
                         //textColor: palette.brightText
 
                         icon.source: root.talkIcon + palette.brightText
+                        icon.width: Style.buttonSize
+                        icon.height: Style.buttonSize
 
                         imageSourceHover: root.talkIcon + palette.brightText
 

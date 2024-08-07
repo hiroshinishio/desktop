@@ -40,6 +40,8 @@ TextField {
         icon {
             source: "image://svgimage-custom-color/send.svg" + "/" + palette.dark
             color: hovered || !sendReplyMessageButton.enabled ? palette.dark : UserModel.currentUser.accentColor
+            icon.width: Style.buttonSize
+            icon.height: Style.buttonSize
         }
 
         anchors {

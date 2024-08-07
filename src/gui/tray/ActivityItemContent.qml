@@ -160,11 +160,13 @@ RowLayout {
             Button {
                 id: fileDetailsButton
 
-                Layout.preferredWidth: Style.dismissButtonSize
-                Layout.preferredHeight: Style.dismissButtonSize
-                Layout.alignment: Qt.AlignTop | Qt.AlignRight
+                // Layout.preferredWidth: Style.dismissButtonSize
+                // Layout.preferredHeight: Style.dismissButtonSize
+                // Layout.alignment: Qt.AlignTop | Qt.AlignRight
 
                 icon.source: "image://svgimage-custom-color/more.svg/" + palette.buttonText
+                icon.width: Style.buttonSize
+                icon.height: Style.buttonSize
 
                 NCToolTip {
                     text: qsTr("Open file details")
@@ -185,13 +187,15 @@ RowLayout {
             Button {
                 id: dismissActionButton
 
-                Layout.preferredWidth: Style.dismissButtonSize
-                Layout.preferredHeight: Style.dismissButtonSize
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                // Layout.preferredWidth: Style.dismissButtonSize
+                // Layout.preferredHeight: Style.dismissButtonSize
+                // Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
 
                 visible: root.showDismissButton && !fileDetailsButton.visible
 
                 icon.source: "image://svgimage-custom-color/clear.svg/" + palette.buttonText
+                icon.width: Style.buttonSize
+                icon.height: Style.buttonSize
 
                 display: Button.IconOnly
                 // leftPadding: 0
