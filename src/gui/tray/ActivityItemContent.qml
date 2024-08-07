@@ -160,9 +160,9 @@ RowLayout {
             Button {
                 id: fileDetailsButton
 
-                // Layout.preferredWidth: Style.dismissButtonSize
-                // Layout.preferredHeight: Style.dismissButtonSize
-                // Layout.alignment: Qt.AlignTop | Qt.AlignRight
+                Layout.preferredWidth: Style.dismissButtonSize
+                Layout.preferredHeight: Style.dismissButtonSize
+                Layout.alignment: Qt.AlignTop | Qt.AlignRight
 
                 icon.source: "image://svgimage-custom-color/more.svg/" + palette.buttonText
                 icon.width: Style.buttonSize
@@ -183,8 +183,8 @@ RowLayout {
             Button {
                 id: dismissActionButton
 
-                // Layout.preferredWidth: Style.dismissButtonSize
-                // Layout.preferredHeight: Style.dismissButtonSize
+                Layout.preferredWidth: Style.dismissButtonSize
+                Layout.preferredHeight: Style.dismissButtonSize
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
 
                 visible: root.showDismissButton && !fileDetailsButton.visible
