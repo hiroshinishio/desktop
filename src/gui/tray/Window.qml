@@ -14,7 +14,7 @@
 
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
+import QtQuick.Controls
 import QtQuick.Layouts 1.15
 import Qt5Compat.GraphicalEffects
 import Qt.labs.platform 1.1 as NativeDialogs
@@ -878,18 +878,18 @@ ApplicationWindow {
 
             active: false
 
-            sourceComponent: CustomButton {
+            sourceComponent: Button {
                 id: newActivitiesButton
                 hoverEnabled: true
                 padding: Style.smallSpacing
 
-                textColor: Style.currentUserHeaderTextColor
-                textColorHovered: Style.currentUserHeaderTextColor
-                contentsFont.bold: true
-                bgNormalColor: Qt.lighter(bgHoverColor, 1.25)
-                bgHoverColor: Style.currentUserHeaderColor
-                bgNormalOpacity: Style.newActivitiesBgNormalOpacity
-                bgHoverOpacity: Style.newActivitiesBgHoverOpacity
+                // textColor: Style.currentUserHeaderTextColor
+                // textColorHovered: Style.currentUserHeaderTextColor
+                // contentsFont.bold: true
+                // bgNormalColor: Qt.lighter(bgHoverColor, 1.25)
+                // bgHoverColor: Style.currentUserHeaderColor
+                // bgNormalOpacity: Style.newActivitiesBgNormalOpacity
+                // bgHoverOpacity: Style.newActivitiesBgHoverOpacity
 
                 anchors.fill: parent
 

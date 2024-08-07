@@ -1,6 +1,6 @@
 import QtQml 2.15
 import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick.Controls
 import QtQuick.Layouts 1.15
 import Style 1.0
 import Qt5Compat.GraphicalEffects
@@ -157,7 +157,7 @@ RowLayout {
                 visible: text !== ""
             }
 
-            CustomButton {
+            Button {
                 id: fileDetailsButton
 
                 Layout.preferredWidth: Style.dismissButtonSize
@@ -172,17 +172,17 @@ RowLayout {
                 }
 
                 display: Button.IconOnly
-                leftPadding: 0
-                rightPadding: 0
-                bgColor: palette.mid
-                bgNormalOpacity:  0
+                // leftPadding: 0
+                // rightPadding: 0
+                // bgColor: palette.mid
+                // bgNormalOpacity:  0
 
                 visible: model.showFileDetails
 
                 onClicked: Systray.presentShareViewInTray(model.openablePath)
             }
 
-            CustomButton {
+            Button {
                 id: dismissActionButton
 
                 Layout.preferredWidth: Style.dismissButtonSize
@@ -194,10 +194,10 @@ RowLayout {
                 icon.source: "image://svgimage-custom-color/clear.svg/" + palette.buttonText
 
                 display: Button.IconOnly
-                leftPadding: 0
-                rightPadding: 0
-                bgColor: palette.mid
-                bgNormalOpacity: 0
+                // leftPadding: 0
+                // rightPadding: 0
+                //bgColor: palette.mid
+                // bgNormalOpacity: 0
 
                 NCToolTip {
                     text: qsTr("Dismiss")

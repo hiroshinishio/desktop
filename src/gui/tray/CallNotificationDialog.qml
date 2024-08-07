@@ -19,7 +19,7 @@ import Style 1.0
 import com.nextcloud.desktopclient 1.0
 import QtQuick.Layouts 1.2
 import QtMultimedia 5.15
-import QtQuick.Controls 2.15
+import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 
 ApplicationWindow {
@@ -232,20 +232,21 @@ ApplicationWindow {
                     id: linksRepeater
                     model: root.links
 
-                    CustomButton {
+                    Button {
                         id: answerCall
                         readonly property string verb: modelData.verb
                         readonly property bool isAnswerCallButton: verb === "WEB"
 
                         visible: isAnswerCallButton
                         text: modelData.label
-                        contentsFont.bold: true
-                        bgColor: Style.ncBlue
-                        bgNormalOpacity: 0.8
+                        // contentsFont.bold: true
+                        // bgColor: Style.ncBlue
+                        // bgNormalOpacity: 0.8
 
-                        textColor: palette.brightText
+                        //textColor: palette.brightText
 
                         icon.source: root.talkIcon + palette.brightText
+
                         imageSourceHover: root.talkIcon + palette.brightText
 
                         Layout.fillWidth: true
@@ -263,14 +264,14 @@ ApplicationWindow {
 
                 }
 
-                CustomButton {
+                Button {
                     id: declineCall
                     text: qsTr("Decline")
                     contentsFont.bold: true
-                    bgColor: Style.errorBoxBackgroundColor
-                    bgNormalOpacity: 0.8
+                    // bgColor: Style.errorBoxBackgroundColor
+                    // bgNormalOpacity: 0.8
 
-                    textColor: palette.brightText
+                    //textColor: palette.brightText
 
                     icon.source: root.deleteIcon + "white"
                     imageSourceHover: root.deleteIcon + "white"
