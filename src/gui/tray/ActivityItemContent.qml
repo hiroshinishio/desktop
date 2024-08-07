@@ -189,7 +189,7 @@ RowLayout {
 
                 // Layout.preferredWidth: Style.dismissButtonSize
                 // Layout.preferredHeight: Style.dismissButtonSize
-                // Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
 
                 visible: root.showDismissButton && !fileDetailsButton.visible
 
