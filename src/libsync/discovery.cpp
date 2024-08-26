@@ -557,6 +557,23 @@ void ProcessDirectoryJob::processFile(PathTuple path,
     item->_previousSize = dbEntry._fileSize;
     item->_previousModtime = dbEntry._modtime;
 
+    QDebug deleteLogger{&item->_discoveryResult};
+    deleteLogger.nospace() << "Processing " << path._original
+                           << " | (db/local/remote)"
+                           << " | valid: " << dbEntry.isValid() << "/" << hasLocal << "/" << hasServer
+                           << " | mtime: " << dbEntry._modtime << "/" << localEntry.modtime << "/" << serverEntry.modtime
+                           << " | size: " << dbEntry._fileSize << "/" << localEntry.size << "/" << serverEntry.size
+                           << " | etag: " << dbEntry._etag << "//" << serverEntry.etag
+                           << " | checksum: " << dbEntry._checksumHeader << "//" << serverEntry.checksumHeader
+                           << " | perm: " << dbEntry._remotePerm << "//" << serverEntry.remotePerm
+                           << " | fileid: " << dbEntry._fileId << "//" << serverEntry.fileId
+                           << " | type: " << dbEntry._type << "/" << localEntry.type << "/" << (serverEntry.isDirectory ? ItemTypeDirectory : ItemTypeFile)
+                           << " | e2ee: " << dbEntry.isE2eEncrypted() << "/" << serverEntry.isE2eEncrypted()
+                           << " | e2eeMangledName: " << dbEntry.e2eMangledName() << "/" << serverEntry.e2eMangledName
+                           << " | file lock: " << localFileIsLocked << "//" << serverFileIsLocked
+                           << " | file lock type: " << localFileLockType << "//" << serverFileLockType
+                           << " | metadata missing: /" << localEntry.isMetadataMissing << '/';
+
     if (dbEntry._modtime == localEntry.modtime && dbEntry._type == ItemTypeVirtualFile && localEntry.type == ItemTypeFile) {
         item->_type = ItemTypeFile;
         qCInfo(lcDisco) << "Changing item type from virtual to normal file" << item->_file;

@@ -717,6 +717,10 @@ void Application::setupLogging()
 #endif
 
     logger->enterNextLogFile();
+    {
+        QDir logFolder{logger->logDir()};
+        logger->setPermanentDeleteLogFile(logFolder.filePath("permanent_delete.log"));
+    }
 
     qCInfo(lcApplication) << "##################" << _theme->appName()
                           << "locale:" << QLocale::system().name()

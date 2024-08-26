@@ -47,6 +47,8 @@ public:
     QString logFile() const;
     void setLogFile(const QString &name);
 
+    void setPermanentDeleteLogFile(const QString &name);
+
     void setLogExpire(int expire);
 
     QString logDir() const;
@@ -98,6 +100,7 @@ private:
     void dumpCrashLog();
     void enterNextLogFileNoLock();
     void setLogFileNoLock(const QString &name);
+    void setPermanentDeleteLogFileNoLock(const QString &name);
 
     QFile _logFile;
     bool _doFileFlush = false;
@@ -110,6 +113,8 @@ private:
     QSet<QString> _logRules;
     QVector<QString> _crashLog;
     int _crashLogIndex = 0;
+    QFile _permanentDeleteLogFile;
+    QScopedPointer<QTextStream> _permanentDeleteLogStream;
 };
 
 } // namespace OCC

@@ -68,6 +68,8 @@ static bool compressLog(const QString &originalName, const QString &targetName)
 
 namespace OCC {
 
+Q_LOGGING_CATEGORY(lcPermanentLog, "nextcloud.log.permanent")
+
 Logger *Logger::instance()
 {
     static Logger log;
@@ -163,6 +165,10 @@ void Logger::doLog(QtMsgType type, const QMessageLogContext &ctx, const QString 
             if (_doFileFlush)
                 _logstream->flush();
         }
+        if (_permanentDeleteLogStream && strcmp(ctx.category, "nextcloud.log.permanent") == 0) {
+            (*_permanentDeleteLogStream) << msg << "\n";
+            _permanentDeleteLogStream->flush();
+        }
         if (type == QtFatalMsg) {
             closeNoLock();
 #if defined(Q_OS_WIN)
@@ -195,6 +201,12 @@ void Logger::setLogFile(const QString &name)
 {
     QMutexLocker locker(&_mutex);
     setLogFileNoLock(name);
+}
+
+void Logger::setPermanentDeleteLogFile(const QString &name)
+{
+    QMutexLocker locker(&_mutex);
+    setPermanentDeleteLogFileNoLock(name);
 }
 
 void Logger::setLogExpire(int expire)
@@ -359,6 +371,36 @@ void Logger::setLogFileNoLock(const QString &name)
     }
 
     _logstream.reset(new QTextStream(&_logFile));
+}
+
+void Logger::setPermanentDeleteLogFileNoLock(const QString &name)
+{
+    if (_permanentDeleteLogStream) {
+        _permanentDeleteLogStream.reset(nullptr);
+        _permanentDeleteLogFile.close();
+    }
+
+    if (name.isEmpty()) {
+        return;
+    }
+
+    bool openSucceeded = false;
+    if (name == QLatin1String("-")) {
+        openSucceeded = _permanentDeleteLogFile.open(stdout, QIODevice::WriteOnly);
+    } else {
+        _permanentDeleteLogFile.setFileName(name);
+        openSucceeded = _permanentDeleteLogFile.open(QIODevice::WriteOnly);
+    }
+
+    if (!openSucceeded) {
+        postGuiMessage(tr("Error"),
+                       QString(tr("<nobr>File \"%1\"<br/>cannot be opened for writing.<br/><br/>"
+                                  "The log output <b>cannot</b> be saved!</nobr>"))
+                           .arg(name));
+        return;
+    }
+
+    _permanentDeleteLogStream.reset(new QTextStream(&_permanentDeleteLogFile));
 }
 
 void Logger::enterNextLogFile()
